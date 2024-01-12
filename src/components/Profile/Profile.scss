@@ -1,0 +1,253 @@
+@import '../../styles/partials.scss/breakpoints';
+
+.profile{
+  position: relative;
+  min-height: 100vh;
+  border-radius: 1rem;
+  width: 99.4vw;
+  background: linear-gradient( to bottom, #b0d8b0, #EEF4ED) ;
+  
+  &--fade{
+    animation: fade 400ms;
+  }
+  
+  @include tablet {
+    padding: 1rem 5rem
+  }
+
+  &__menu{
+    position: absolute;
+    width:3rem;
+    right: 1rem;
+    top: 1rem;
+    
+    &:hover{
+      cursor: pointer;
+    }
+
+    @include desktop {
+      right: 4rem;
+      top: 2.5rem;
+    }
+  }
+  
+  &__dropdown{
+    padding: 0.75rem 0;
+    position: absolute;
+    border: 2px solid black;
+    top: 2.1rem;
+    right: 2rem;
+    background-color: #F9F4F1;
+    display: none;
+    z-index: 1000;
+
+    &--active{
+      display: flex;
+      flex-direction: column;
+    }
+
+    &--option{
+      margin: 1rem;
+      padding: 0.25rem 0.5rem;
+      font-size: 1.9rem;
+      border-bottom: 1px solid grey;
+      &:hover{
+        background-color: #caf0ca;
+        cursor: pointer;
+      }
+    }
+  }
+  
+  &__banner{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+      padding-left: 4rem;
+    }
+  }
+
+  &__avatar{
+    height: 6rem;
+    width: 6rem;
+    background-color: aliceblue;
+    border: 2px solid black;
+    border-radius: 100%;
+    margin: 1rem;
+    object-fit: cover;
+    object-position: 25% 50%;
+    @include tablet {
+
+      height: 10rem;
+      width: 10rem;
+    }
+  }
+
+  &__info{
+    margin-left: 1rem;
+    @include tablet {
+      border-left: 5px solid grey;
+    }
+  }
+  
+  &__map{
+    margin: 1rem 1rem 0 1rem;
+    border: 5px solid black;
+    border-radius: 1.2rem;
+    @include tablet{
+      border-radius: 4.2rem;
+    }
+
+    @include desktop{
+      border-radius: 6.2rem;
+    }
+  }
+  
+  &__feed-heading{
+    text-align: center;
+    font-size: 1.7rem;
+    margin: 1.5rem 0 0.5rem 0;
+    @include tablet{
+      font-size: 2.2rem;
+    }
+
+    &--promos{
+      display: flex;
+      justify-content: center;  
+    }
+
+    
+
+    &--arrow{
+      display: none;
+      width: 3rem;
+      top: 1.25rem;
+      margin-right: 0.5rem;
+      transform: scaleX(-1);
+      margin-right: 1.5rem;
+      width: 4.5rem;
+      
+      @include tablet{
+        display: block;
+      }
+    }
+  }
+  
+  &__heading{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    padding: 0 2rem;
+
+    @include tablet{
+      text-align: left;
+      font-size: 2.3rem;
+      margin: 1rem 0;
+    }
+  }
+
+  &__feed{
+    margin: 1rem 0;
+    height: 30.1vh;
+    overflow: auto;
+    border-radius: 0.35rem;
+    padding: 1rem;
+
+
+  }
+
+  &__entry{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: azure;
+    padding: 1rem 2.5rem;
+    box-shadow: 0.25rem 0.25rem 1rem grey;
+    border-radius: 0.25rem;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2rem;
+    margin: 0.5rem;
+    word-wrap: break-word;
+    font-weight: 500; 
+    
+    &:hover{
+      background-color: #caf0ca;
+    }
+      @include tablet {
+        font-size: 2rem;
+        min-height: 5rem;
+      }
+      
+      &--link {
+        display: inline-block;
+        flex: 1;
+        width: 100%;
+        font-size: 1.6rem;
+        font-weight: 500; 
+        word-wrap: break-word;
+        @include tablet {
+          font-size: 2.5rem;
+        }
+        &:hover{
+          cursor: pointer;
+        }
+
+      }
+
+      &--empty{
+        text-align: center;
+      }
+    }
+  
+
+  &__delete{
+    width: 2rem;
+    @include tablet {
+      width: 4rem;
+    }
+
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+  &__form{
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__return-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__return{
+    background-color: black;
+    color: #EEF4ED;
+    padding: 0 0.5rem 0.5rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    
+    &:hover{
+      cursor: pointer;
+      color: gold;
+    }
+    
+    @include tablet {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@keyframes fade {
+  100%{
+    scale: 1.2;
+    opacity: 0.1;
+  }
+  
+}

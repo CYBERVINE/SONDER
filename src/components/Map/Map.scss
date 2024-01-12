@@ -1,0 +1,265 @@
+@import '../../styles/partials.scss/breakpoints';
+
+.map{
+  position: relative;
+
+  &__popup-button{
+    display: flex;
+    font-weight: bold;
+    color: black;
+    padding: 1rem;
+    background-color: gold;
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    margin-bottom: 0.25rem;
+    position: relative;
+    
+    @include tablet{
+      font-size: 1rem;
+    }
+
+    @include desktop {
+      font-size: 1.3rem;
+      
+    }
+
+    &:hover{
+      cursor: pointer;
+      background-color: #333333;
+      color: aqua;
+    }
+    
+    &--signup{
+      line-height: 1rem;
+    }
+
+
+    &--link{
+
+      &:focus{
+        animation: link 1s;
+      }
+    }
+
+    &--icon{
+      position: absolute;
+      height: 1.25rem;
+      top: 0.5rem;
+      right: 0.5rem;
+
+      @include tablet{
+        height: 2rem;
+        top: 0.6rem;
+        right: 1.5rem
+
+      }
+    }
+
+  }
+
+  &__marker{
+    border-radius: 100%;
+    border: 1px solid gold;
+    box-shadow: 0.75rem 0.75rem 0.75rem black;
+
+    
+    &:hover{
+      border: 5px solid gold;
+    }
+  }
+
+  &__hidden-icon{
+    width: 2rem;
+    margin: 0 0.5rem;
+  }
+
+  &__popup{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: lightcyan;
+    color: #333333;
+    padding: 0.25rem 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    
+    @include tablet{
+      line-height: 3.15rem;
+      width: 20rem;
+    }
+    @include desktop{
+      width: 25rem;
+    }
+  }
+
+  &__comment{
+    font-weight: 700;
+    margin: 0;
+    border-bottom: 4px solid;
+    border-top: 4px solid;
+    word-wrap: break-word;
+
+    @include tablet{
+      font-size: 1.5rem;
+      padding: 0.5rem;
+
+    }
+    @include desktop{
+      font-size: 2rem;
+      padding: 1rem;
+
+    }
+
+    &--hidden{
+      text-align: center;
+      color: white;
+      background-color: #333333;
+    }
+  }
+
+  &__nav{
+    background-color: none;
+    position: absolute;
+    bottom: 0;
+    z-index: 1000;
+    height: inherit;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 0;
+    width: 100vw;
+
+
+    @include tablet {
+      padding: 0 2rem
+    }
+    @include desktop {
+      padding: 0 10rem 
+    }
+
+    &--modal{
+      display: none;
+    }
+
+    &--profile{
+      display: none;
+    }
+
+  }
+
+  &__precision{
+    color: white;
+    bottom: 1rem;
+    background-color: black;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.25rem;
+    border: 2px solid grey;
+    width: 7rem;
+    font-size: 0.5rem;
+
+    @include tablet {
+      margin: 2rem;
+      font-size: 1.5rem;
+      width: 10rem;
+    }
+    &-title{
+      font-size: 1rem;
+
+      @include tablet{
+        font-size: 1.6rem;
+      }
+    }
+
+    &-button{
+      color: wheat;
+      background-color: green;
+      border: 1px solid gold;
+      width: 100%;
+      margin: 0.25rem;
+      font-size: 0.9rem;
+      @include tablet{
+        font-size: 1.5rem;
+      }
+
+      &:hover{
+        cursor: pointer;
+        color: white;
+      }
+
+    }
+  }
+
+ 
+
+  &__nav-button{
+    color: whitesmoke;
+    background-color: black;
+    border: 4px solid grey;
+    border-radius: 30%;
+    font-size: 1rem;
+    padding: 0.25rem;
+
+    
+    &:hover{
+      cursor: pointer;
+      color: rgba(0, 255, 255, 0.8);
+      border: 4px solid rgba(255, 217, 0, 0.8);
+    }
+
+    @include tablet {
+      margin: 2rem;
+      padding: 0.65rem 1.25rem;
+      font-size: 1.4rem;
+    }
+    
+    @include desktop{
+      font-size: 2rem;
+    }
+    
+    &--collapse{
+      color:rgb(128, 128, 128, 0);
+      padding: 0 .8rem;
+      color: grey;
+      
+      &:hover{
+        color: grey;
+        cursor: pointer;
+        border: 4px solid grey
+  
+      }
+
+      @include tablet{
+        padding: 0 3.3rem ;
+
+      }
+    }
+
+  }
+
+}
+
+
+@keyframes link {
+  0%{
+    background-color: aqua;
+    color: aqua;
+  }
+
+  20%{
+    color: black;
+  }
+  50%{
+    background-color: aqua;
+  }
+  100%{
+    background-color: gold;
+    color: aqua;
+  }
+}
+
+

@@ -1,0 +1,223 @@
+@import '../../styles/partials.scss/breakpoints';
+
+.header{
+  min-height: 25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__line{
+    
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    
+    @include tablet{
+      margin: 2rem 0;
+      font-size: 3rem;
+    }
+    
+    opacity: 0;
+    
+    &--one{
+      animation: fade-in-one 5s;
+      animation-delay: 2000ms;
+      animation-fill-mode: forwards;
+    }
+    
+    &--two{
+      animation: fade-in-two 4s;
+      animation-delay: 3000ms;
+      animation-fill-mode: forwards;
+      
+    }
+    &--three{
+      animation: fade-in-three 8s;
+      animation-delay: 3500ms;
+      animation-fill-mode: forwards;
+    }
+
+    &--sonder{
+      font-size: 2.5rem;
+      letter-spacing: 0.5rem;
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      animation: fade-in-four 9s;
+      animation-delay: 3500ms;
+      animation-fill-mode: forwards;
+      text-align: center;
+      opacity: 0;
+      
+      @include tablet{
+        
+        font-size: 4.5rem;
+        letter-spacing: 1rem;
+      }
+    }
+  }
+}
+
+@keyframes fade-in-one {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+@keyframes fade-in-two {
+  0%{
+    opacity: 0;
+  }
+  40%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+@keyframes fade-in-three {
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+@keyframes fade-in-four {
+  0%{
+    opacity: 0;
+  }
+  80%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+.enterance{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+
+  @include tablet {
+    flex-direction: row;
+  }
+
+  @include desktop {
+    padding: 0 20vw;
+  }
+
+  &__card{
+    border: 1px solid black;
+    height: 8rem;
+    width: 15rem;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    
+    @include tablet{
+      margin: 1rem;
+      height: 10rem;
+    }
+
+    @include desktop {
+      height: 15rem;
+      width: 20rem;
+      padding: 2rem;
+      margin: 4rem;
+    }
+    
+  }
+  &__anonymous{
+    background-color: black;
+    color: white;
+
+    &--text{
+
+      margin: 0.25rem 0 0.3rem 0.25rem;
+      @include tablet{
+        margin: 0.75rem;
+      }
+    }
+
+    &:hover{
+      color: gold;
+      opacity: .97;
+    }
+  }
+
+  &__known{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: beige;
+    font-weight: 200;
+
+    &--text{
+      font-weight: 500;
+      padding: 1rem 3rem;
+      &:hover{
+        font-weight: 700;
+        color: gold;
+      }
+    }
+  }
+}
+
+.ellpses{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 0.75rem;
+  
+  @include desktop{
+    margin-top: 3rem;
+
+  }
+
+}
+
+.ellpsis{
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: grey;
+  border-radius: 1rem;
+  opacity: 0;
+
+  &__one{
+    animation: blink 1800ms 10100ms ease-in-out infinite;
+  }
+  &__two{
+    animation: blink 1800ms 10433ms ease-in-out infinite;
+  }
+  &__three{
+    animation: blink 1800ms 10766ms ease-in-out infinite;
+  }
+}
+
+@keyframes blink {
+  0%{
+    opacity: 0;
+    scale: (.8);
+  }
+  20%{
+    opacity: .9;
+    scale: (1);
+  }
+  60%{
+    opacity: 0;
+    scale: (1);
+  }
+  100%{
+    opacity: 0;
+    scale: (1);
+  }
+}
+

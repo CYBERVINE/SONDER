@@ -1,0 +1,56 @@
+.main-page{
+
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.modal-div{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: skyblue;
+  opacity: 0.5;
+  
+  &--active{
+    display: flex;
+    z-index: 500;
+  }
+}
+
+.form-div{
+  display: none;
+  &--active{
+    display: flex;
+    z-index: 1500;
+  }
+}
+
+.map-div{
+  position: absolute;
+  &--out{
+    animation: map 800ms ease-in-out
+  }
+}
+
+@keyframes map {
+  0%{
+    transform: scale(1);
+  }
+
+  80%{
+    transform: scale(.5);
+    opacity: 1;
+  }
+
+  100%{
+    opacity: 0.8;
+    transform: scale(.5);
+  }
+}
