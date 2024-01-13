@@ -7,7 +7,7 @@ import axios from "axios"
 
 function MapPage ({giveCoords, coords, getLoginId, decodedToken}) {
 
-  const URL = "http://localhost:8080"
+  const URL = import.meta.env.VITE_BASE_URL
   const [posts, setPosts] = useState([])
   const [modalActive, setModalActive] = useState("")
   const [formActive, setFormActive] = useState("")
