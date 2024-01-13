@@ -63,16 +63,16 @@ li {
 }
 
 
-.leaflet-popup-tip-container{
+.leaflet-popup-tip-container, .leaflet-popup-close-button{
   display: none;
 }
 .leaflet-popup-content{
   width: 10rem;
   margin: 0;
   padding: 0;
+  background-color: black;
 
 }
-
 
 .form{
   display: flex;
