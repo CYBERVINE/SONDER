@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import axios from "axios"
 
 function Signup () {
-
+  const URL = import.meta.env.VITE_BASE_URL
   const navigate = useNavigate()
   const [password, setPassword] = useState("")
   const [emailInUse, setEmailInUse] = useState("")
@@ -19,13 +19,13 @@ function Signup () {
         if ((form.password.value === form.confirmPassword.value) && form.password.value.length > 4){
 
           try{
-            const response = await axios.post('http://localhost:8080/users', 
+            const response = await axios.post(`${URL}/users`, 
             {
               username: form.username.value,
               email: form.email.value,
               password: form.password.value,
               city: "default",
-              avatar: "http://localhost:8080/avatars/anonymous.png",
+              avatar: `${URL}/avatars/anonymous.png`,
               description: "New to Sonder"
             })
           } catch (err) {

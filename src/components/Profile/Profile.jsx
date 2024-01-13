@@ -10,6 +10,7 @@ import axios from "axios"
 
 
 function Profile ({giveCoords, coords, decodedToken, getLoginId}) {  
+    const URL = import.meta.env.VITE_BASE_URL
     const mapRef = useRef(null);
     const params = useParams()
     const [user, setUser] = useState({})
@@ -37,9 +38,9 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
 
     async function getProfile(params){
         try{
-            const user = await axios.get(`http://localhost:8080/users/${params.id}`)
-            const promos = await axios.get(`http://localhost:8080/promos/${params.id}`)
-            const posts = await axios.get(`http://localhost:8080/posts/${params.id}`)
+            const user = await axios.get(`${URL}/users/${params.id}`)
+            const promos = await axios.get(`${URL}/promos/${params.id}`)
+            const posts = await axios.get(`${URL}/posts/${params.id}`)
             setUser(user.data)
             setPromos(promos.data)
             setPosts(posts.data)
@@ -56,10 +57,10 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
     useEffect(()=>{ getProfile(params)},[user.username])
     useEffect(()=>{ getLoginId()},[])
     useEffect(()=>{ giveCoords()},[])
-    
+
     return(
         <main onClick={()=>{if(menu)setMenu(false)}}className={`profile ${profileFade}`}>
-                {(decodedToken?.id === user.id) && 
+                {((decodedToken.id !== undefined) && (decodedToken.id === user.id)) && 
                 <>
                 <img onClick={()=>{menu === false ? setMenu(true) : setMenu(false)}} 
                     className="profile__menu"  
