@@ -1,4 +1,4 @@
-import './AddComment.scss' /// changed this
+import './AddComment.scss'
 import axios from "axios"
 const URL = import.meta.env.VITE_BASE_URL
 
