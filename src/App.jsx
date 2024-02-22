@@ -2,7 +2,7 @@ import './styles/global.scss'
 
 import { BrowserRouter, Routes, Route, } from 'react-router-dom'
 import { useState } from 'react'
-import { decodeToken } from "../node_modules/react-jwt" //deploy
+import { decodeToken } from "react-jwt" //deploy
 
 import IndexPage from './Pages/IndexPage/IndexPage'
 import SignupPage from './Pages/SignupPage/SignupPage'

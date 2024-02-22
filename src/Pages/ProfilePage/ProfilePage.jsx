@@ -1,5 +1,5 @@
 import Profile from '../../components/Profile/Profile'
-import Map from '../../components/Map/Map'
+import Map from '../../components/Map/Map.tsx'
 import './ProfilePage.scss'
 function ProfilePage ({giveCoords, coords, decodedToken, getLoginId}) {
   

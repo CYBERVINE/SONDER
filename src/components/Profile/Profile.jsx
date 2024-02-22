@@ -60,7 +60,7 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
 
     return(
         <main onClick={()=>{if(menu)setMenu(false)}}className={`profile ${profileFade}`}>
-                {((decodedToken.id !== undefined) && (decodedToken.id === user.id)) && 
+                {((decodedToken?.id !== undefined) && (decodedToken.id === user.id)) && 
                 <>
                 <img onClick={()=>{menu === false ? setMenu(true) : setMenu(false)}} 
                     className="profile__menu"  
