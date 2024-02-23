@@ -30,7 +30,8 @@
     }
     
     &--signup{
-      line-height: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.3rem;
     }
 
 
@@ -75,7 +76,7 @@
 
   &__popup{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    width: 10rem;
+    width: 15rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -100,10 +101,14 @@
     border-bottom: 4px solid;
     border-top: 4px solid;
     word-wrap: break-word;
-
+    overflow-y: scroll;
+    max-height: 10rem;
+    line-height: 1.7rem;
+    
     @include tablet{
       font-size: 1.5rem;
       padding: 0.5rem;
+      max-height: 17rem;
 
     }
     @include desktop{
@@ -130,9 +135,11 @@
     align-items: flex-end;
     height: 0;
     width: 100vw;
+    flex-direction: column;
 
 
     @include tablet {
+      flex-direction: row;
       padding: 0 2rem
     }
     @include desktop {
@@ -150,11 +157,12 @@
   }
 
   &__precision{
+    
     color: white;
     bottom: 1rem;
     background-color: black;
     border-radius: 0.5rem;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     padding: 0.25rem;
@@ -163,6 +171,7 @@
     font-size: 0.5rem;
 
     @include tablet {
+      display: flex;
       margin: 2rem;
       font-size: 1.5rem;
       width: 10rem;
@@ -203,6 +212,14 @@
     border-radius: 30%;
     font-size: 1rem;
     padding: 0.25rem;
+    margin-top: -12rem;
+    
+    &--raised{
+      margin-top: -17rem;
+      @include tablet{
+        margin: 2rem;
+      }
+    }
 
     
     &:hover{

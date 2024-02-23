@@ -65,16 +65,16 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
                           <p className="map__comment">{comment.comment}</p> 
                         {decodedToken?.id ? <button className="map__popup-button map__popup-button--boost" onClick={()=>likeComment(comment.id)}>
                           BOOST SIGNAL : {comment.likes}
-                          < img className="map__popup-button--icon" src="../../src/assets/images/boost.png" alt="" />
+                          < img className="map__popup-button--icon" src={`${import.meta.env.VITE_BASE_URL}/animations/boost.png`} alt="" />
                           </button> : 
                           <Link className="map__popup-button map__popup-button--signup" to={'/signup'}>
                           Register account to boost.
-                          < img className="map__popup-button--icon" src="../../src/assets/images/boost.png" alt="" />
+                          < img className="map__popup-button--icon" src={`${import.meta.env.VITE_BASE_URL}/animations/boost.png`} alt="" />
                           </Link>
                           }
                           <button className="map__popup-button map__popup-button--link" onClick={()=>toggleMain(comment.user_id)}>
                             FOLLOW THAT THOUGHT!
-                          < img className="map__popup-button--icon" src="../../src/assets/images/thought.png" alt="" />
+                          < img className="map__popup-button--icon" src={`${import.meta.env.VITE_BASE_URL}/animations/thought.png`} alt="" />
                             </button>
                           </>
                           :
@@ -106,14 +106,14 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
               </>
             </section>
               {(sessionStorage.getItem("authToken") && !params.id) ?
-                  <p onClick={()=>toggleMain(decodedToken?.id)} className="map__nav-button">
+                  <p onClick={()=>toggleMain(decodedToken?.id)} className="map__nav-button ">
                   View Profile
                   </p> :
                   <Link to={"/signup"} className="map__nav-button">Create Profile</Link>
                 }
             <p 
             onClick={toggleModal} 
-            className={modalActive === "" ? "map__nav-button" : "map__nav--modal"}>
+            className={modalActive === "" ? "map__nav-button map__nav-button--raised" : "map__nav--modal"}>
                 Make Post
             </p>
             </footer>

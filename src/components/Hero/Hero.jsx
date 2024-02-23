@@ -5,7 +5,6 @@ function Hero () {
   return (
     <>
     <div className="header">
-
     <h1 className="header__line header__line--one">THE WORLD IS THE POST</h1>
     <h1 className="header__line header__line--two">AND THIS IS THE COMMENT SECTION</h1>
     <h1 className="header__line--sonder">SONDER</h1>

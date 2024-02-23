@@ -1,20 +1,28 @@
 @import '../../styles/partials.scss/breakpoints';
 
 .header{
-  min-height: 25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-top: 5rem;
+  
+  @include tablet {
+    padding-top: 10rem;
+    
+  }
+
 
   &__line{
     
     text-align: center;
     margin-bottom: 0.5rem;
     font-weight: 500;
+    font-size: 1.4rem;
+    margin: 1.5rem 0;
     
     @include tablet{
-      margin: 2rem 0;
-      font-size: 3rem;
+      margin: 1rem 0;
+      font-size: 2.5rem;
     }
     
     opacity: 0;
@@ -103,7 +111,6 @@
   justify-content: space-around;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
 
   @include tablet {
     flex-direction: row;
@@ -116,10 +123,10 @@
   &__card{
     border: 1px solid black;
     height: 8rem;
-    width: 15rem;
-    margin-bottom: 0.5rem;
+    margin: 1.5rem 0;
     padding: 1rem;
     border-radius: 0.5rem;
+    width: 14rem;
     
     @include tablet{
       margin: 1rem;
@@ -127,26 +134,27 @@
     }
 
     @include desktop {
-      height: 15rem;
+      height: 12rem;
       width: 20rem;
-      padding: 2rem;
-      margin: 4rem;
+      padding: 1rem;
+      margin: 3rem;
     }
     
   }
   &__anonymous{
     background-color: black;
+    border: 3px solid black;
     color: white;
 
     &--text{
-
       margin: 0.25rem 0 0.3rem 0.25rem;
       @include tablet{
-        margin: 0.75rem;
+        margin-bottom: 0.5rem;
       }
     }
 
     &:hover{
+      border: 3px solid aqua;
       color: gold;
       opacity: .97;
     }
@@ -157,13 +165,26 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: beige;
+    background-color: beige;  
+    border: 3px solid beige;      
     font-weight: 200;
-
+    &:hover{
+      border: 2px solid aqua;
+    }
+    
     &--text{
       font-weight: 500;
-      padding: 1rem 3rem;
+      padding: 0.25rem 1rem;
+      border: 3px solid beige;
+      font-size: 1rem;
+      
+      @include tablet{
+        padding: 1rem 3rem;
+        font-size: 1.2rem;
+      }
       &:hover{
+        background-color: black;
+        border: 3px solid aqua;
         font-weight: 700;
         color: gold;
       }
