@@ -6,7 +6,7 @@ function IndexPage () {
   return (
     <main className="index">
     <section className="index-page">
-      <video className="index-page__video"src="../src/assets/videos/hero-video1.mov" loop={true} autoPlay={true} muted type="video/mp4">
+      <video className="index-page__video"src={`${import.meta.env.VITE_BASE_URL}/animations/hero.mov`} loop={true} autoPlay={true} muted type="video/mp4">
       </video>
     <Hero/>
     </section>
