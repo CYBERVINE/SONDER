@@ -1,4 +1,4 @@
-import Map from "../../components/Map/Map.tsx"
+import Map from "../../components/Map/Map.jsx"
 import AddComment from '../../components/AddComment/AddComment'
 import './MapPage.scss'
 import { useState, useEffect } from "react"

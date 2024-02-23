@@ -22,7 +22,7 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
     const navigate = useNavigate()
 
     const customIcon = new L.Icon({
-        iconUrl: '../../src/assets/images/sonderance.gif',
+        iconUrl: `${import.meta.env.VITE_BASE_URL}/animations/sonderance.gif`,
         iconSize: [40, 40], 
         iconAnchor: [16, 32], 
         popupAnchor: [0, -32], 
