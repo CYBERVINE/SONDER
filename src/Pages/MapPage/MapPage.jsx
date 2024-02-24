@@ -43,7 +43,7 @@ function MapPage ({giveCoords, coords, getLoginId, decodedToken}) {
         <AddComment decodedToken={decodedToken} getPosts={getPosts} posts={posts} giveCoords={giveCoords} coords={coords} toggleModal={toggleModal}/>
       </div>
       <div className={`map-div ${mapMove}`}>
-        <Map  decodedToken={decodedToken} getLoginId={getLoginId} getPosts={getPosts} posts={posts} giveCoords={giveCoords}  coords={coords} toggleMain={toggleMain} toggleModal={toggleModal} modalActive={modalActive} mapMove={mapMove}/>
+        <Map  decodedToken={decodedToken} getLoginId={getLoginId} getPosts={getPosts} posts={posts} giveCoords={giveCoords} coords={coords} toggleMain={toggleMain} toggleModal={toggleModal} modalActive={modalActive} mapMove={mapMove}/>
       </div>
     </section>
   )

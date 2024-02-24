@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState} from "react";
+import React, { useRef, useEffect, useState } from "react";
 import {Link} from 'react-router-dom'
 import { useParams } from "react-router";
 import MarkerClusterGroup from 'react-leaflet-cluster'
@@ -19,13 +19,19 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
                      useEffect(()=>{giveCoords()},[])
         }
 
-    const customIcon = new L.Icon({
+    const sonderance = new L.Icon({
       iconUrl: `${import.meta.env.VITE_BASE_URL}/animations/sonderance.gif`,
       iconSize: [40, 40], 
       iconAnchor: [16, 32], 
       popupAnchor: [0, -32], 
       className: "map__marker"
     });
+    const location = new L.Icon({
+      iconUrl: "null",
+      iconSize: [4, 4], 
+      className: "map__location"
+    });
+
 
     async function likeComment(id) {
       try{
@@ -38,11 +44,13 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
         console.error(err)
       }
     }
+
+    console.log(coords)
   
     return ( 
       <>
     { coords.lat &&
-      <main className="map">
+      <main className="map" onClick={giveCoords}>
         <MapContainer className="leaf" center={[coords.lat, coords.lng]} zoom={15} zoomControl={false} ref={mapRef} 
         attributionControl={false}  style={{height: "100vh", width: "100vw"}}>
           <TileLayer
@@ -51,13 +59,13 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
             maxZoom= {20}
             subdomains={['mt1','mt2','mt3']}
             />
+            <Marker position={[coords.lat, coords.lng]} icon={location}></Marker>
             <MarkerClusterGroup
              maxClusterRadius={15} 
              >
             {posts && posts.map((comment) => {
               return (
-                <Marker key={comment.id} position={[comment.lat, comment.lng]} icon={customIcon} className="map__marker">
-      
+                <Marker key={comment.id} position={[comment.lat, comment.lng]} icon={sonderance} className="map__marker">
                     <Popup>
                         <section className="map__popup">
                           {(Math.abs(comment.lat - coords.lat) < range) && (Math.abs(comment.lng - coords.lng) < range) ? 
@@ -82,7 +90,7 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
                           <p
                           className="map__comment map__comment--hidden">
                             You're not close enough, yet. This monologue is boosted 
-                            < img className="map__hidden-icon" src="../../src/assets/images/boost.png" alt="" />
+                            < img className="map__hidden-icon" src={`${import.meta.env.VITE_BASE_URL}/animations/boost.png`} alt="" />
                             {comment.likes} times.
                           </p>
                           </> 
