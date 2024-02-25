@@ -57,7 +57,7 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
     useEffect(()=>{ getProfile(params)},[user.username])
     useEffect(()=>{ getLoginId()},[])
     useEffect(()=>{ giveCoords()},[])
-    console.log(user.id)
+    console.log(promos)
     return(
         <main onClick={()=>{if(menu)setMenu(false)}}className={`profile ${profileFade}`}>
                 {((decodedToken?.id !== undefined) && (decodedToken.id === user.id)) && 
@@ -153,7 +153,7 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
                             {promo.promo}
                             </a>
                         {(decodedToken?.id === user.id) && <img 
-                        onClick={()=>deletePromo(promo.id)} 
+                        onClick={()=>deletePromo(promo._id)} 
                         className="profile__delete" 
                         src="../../src/assets/images/delete.svg" 
                         alt="delete" />}

@@ -1,12 +1,12 @@
 import Hero from "../../components/Hero/Hero"
 import './IndexPage.scss'
 
-
+const URL = import.meta.env.VITE_BASE_URL
 function IndexPage () {
   return (
     <main className="index">
     <section className="index-page">
-      <video className="index-page__video"src={`${import.meta.env.VITE_BASE_URL}/animations/hero.mov`} loop={true} autoPlay={true} muted type="video/mp4"></video>
+      <video className="index-page__video"src={`${URL}/animations/hero.mov`} loop={true} autoPlay={true} muted type="video/mp4"></video>
     <Hero/>
     </section>
       <div className="index-page__backing">
