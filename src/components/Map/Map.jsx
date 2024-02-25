@@ -14,6 +14,7 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
   const params = useParams()
   const mapRef = useRef(null);
   const [range, setRange] = useState(0.001)
+  const [hide, setHide] = useState(false)
 
     if(!params.id) { useEffect(()=>{getPosts()},[posts.length]),
                      useEffect(()=>{giveCoords()},[])
@@ -33,6 +34,9 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
       className: "map__location"
     });
 
+    function hidePrecision () {
+      hide ? setHide(false) : setHide(true)
+    }
 
     async function likeComment(id) {
       try{
@@ -74,7 +78,7 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
                           BOOST SIGNAL : {comment.likes}
                           < img className="map__popup-button--icon" src={`${URL}/animations/boost.png`} alt="" />
                           </button> : 
-                          <Link className="map__popup-button map__popup-button--signup" to={'/signup'}>
+                          <Link className="map__popup-button" to={'/signup'}>
                           Register account to boost.
                           < img className="map__popup-button--icon" src={`${URL}/animations/boost.png`} alt="" />
                           </Link>
@@ -104,24 +108,24 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
 
           <footer className={params.id ? "map__nav--profile" : "map__nav"}>
             <section className={modalActive === "" ? "map__precision" : "map__nav--modal"}> 
-                <p className="map__precision-title" >Set Precison</p>
+                <p  className="map__precision-title" onClick={hidePrecision} >Set Precison</p>
               <>
-                <button className="map__precision-button" onClick={()=>setRange(0.001)}>High</button>
-                <button className="map__precision-button" onClick={()=>setRange(0.01)}>Medium</button>
-                <button className="map__precision-button" onClick={()=>setRange(0.1)}>Low</button>
+                <button className={hide ? "map__precision-button" : "map__precision-button--hidden"} onClick={()=>setRange(0.001)}>High</button>
+                <button className={hide ? "map__precision-button" : "map__precision-button--hidden"} onClick={()=>setRange(0.01)}>Medium</button>
+                <button className={hide ? "map__precision-button" : "map__precision-button--hidden"} onClick={()=>setRange(0.1)}>Low</button>
                 <p>{range}</p>
               </>
             </section>
               {(sessionStorage.getItem("authToken") && !params.id) ?
                   <p onClick={()=>toggleMain(decodedToken?.id)} className="map__nav-button ">
-                  View Profile
+                  Profile
                   </p> :
-                  <Link to={"/signup"} className="map__nav-button">Create Profile</Link>
+                  <Link to={"/signup"} className="map__nav-button">Sign Up</Link>
                 }
             <p 
             onClick={toggleModal} 
             className={modalActive === "" ? "map__nav-button map__nav-button--raised" : "map__nav--modal"}>
-                Make Post
+                Post
             </p>
             </footer>
         </main>

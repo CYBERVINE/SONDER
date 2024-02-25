@@ -41,6 +41,31 @@ li {
   list-style-type: none;
 }
 
+
+
+.loading{
+  position: absolute;
+  z-index: 1000;
+  left:8vw;
+  animation: loading alternate 1.3s infinite;
+  
+  @include desktop{
+    left:24vw;
+  }
+}
+  
+  @keyframes loading {
+    0%{
+      opacity: 0;
+      transform: scale(0.99);
+    }
+    100%{
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+
 .leaflet-container {
   border-radius: 1rem;
 
