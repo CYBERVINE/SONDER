@@ -20,12 +20,13 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
         }
 
     const sonderance = new L.Icon({
-      iconUrl: `${import.meta.env.VITE_BASE_URL}/animations/sonderance.gif`,
+      iconUrl: `${URL}/animations/sonderance.gif`,
       iconSize: [40, 40], 
       iconAnchor: [16, 32], 
       popupAnchor: [0, -32], 
       className: "map__marker"
     });
+
     const location = new L.Icon({
       iconUrl: "null",
       iconSize: [4, 4], 
@@ -44,8 +45,6 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
         console.error(err)
       }
     }
-
-    console.log(coords)
   
     return ( 
       <>
@@ -71,18 +70,18 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
                           {(Math.abs(comment.lat - coords.lat) < range) && (Math.abs(comment.lng - coords.lng) < range) ? 
                           <>
                           <p className="map__comment">{comment.comment}</p> 
-                        {decodedToken?.id ? <button className="map__popup-button map__popup-button--boost" onClick={()=>likeComment(comment.id)}>
+                        {decodedToken.id ? <button className="map__popup-button map__popup-button--boost" onClick={()=>likeComment(comment.id)}>
                           BOOST SIGNAL : {comment.likes}
-                          < img className="map__popup-button--icon" src={`${import.meta.env.VITE_BASE_URL}/animations/boost.png`} alt="" />
+                          < img className="map__popup-button--icon" src={`${URL}/animations/boost.png`} alt="" />
                           </button> : 
                           <Link className="map__popup-button map__popup-button--signup" to={'/signup'}>
                           Register account to boost.
-                          < img className="map__popup-button--icon" src={`${import.meta.env.VITE_BASE_URL}/animations/boost.png`} alt="" />
+                          < img className="map__popup-button--icon" src={`${URL}/animations/boost.png`} alt="" />
                           </Link>
                           }
                           <button className="map__popup-button map__popup-button--link" onClick={()=>toggleMain(comment.user_id)}>
                             FOLLOW THAT THOUGHT!
-                          < img className="map__popup-button--icon" src={`${import.meta.env.VITE_BASE_URL}/animations/thought.png`} alt="" />
+                          < img className="map__popup-button--icon" src={`${URL}/animations/thought.png`} alt="" />
                             </button>
                           </>
                           :
@@ -90,7 +89,7 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
                           <p
                           className="map__comment map__comment--hidden">
                             You're not close enough, yet. This monologue is boosted 
-                            < img className="map__hidden-icon" src={`${import.meta.env.VITE_BASE_URL}/animations/boost.png`} alt="" />
+                            < img className="map__hidden-icon" src={`${URL}/animations/boost.png`} alt="" />
                             {comment.likes} times.
                           </p>
                           </> 

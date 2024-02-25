@@ -22,7 +22,7 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
     const navigate = useNavigate()
 
     const customIcon = new L.Icon({
-        iconUrl: `${import.meta.env.VITE_BASE_URL}/animations/sonderance.gif`,
+        iconUrl: `${URL}/animations/sonderance.gif`,
         iconSize: [40, 40], 
         iconAnchor: [16, 32], 
         popupAnchor: [0, -32], 
@@ -57,14 +57,14 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
     useEffect(()=>{ getProfile(params)},[user.username])
     useEffect(()=>{ getLoginId()},[])
     useEffect(()=>{ giveCoords()},[])
-
+    console.log(user.id)
     return(
         <main onClick={()=>{if(menu)setMenu(false)}}className={`profile ${profileFade}`}>
                 {((decodedToken?.id !== undefined) && (decodedToken.id === user.id)) && 
                 <>
                 <img onClick={()=>{menu === false ? setMenu(true) : setMenu(false)}} 
                     className="profile__menu"  
-                    src="../src/assets/images/menu.png" 
+                    src={`${URL}/animations/menu.png`}
                     alt="menu" />
                 <div 
                     className={`profile__dropdown ${menu === false ? "" : "profile__dropdown--active"}`}>
@@ -82,7 +82,7 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
                 <div className='profile__banner'>
                     {user.avatar ? <img className='profile__avatar'  
                         src={user.avatar} alt="avatar" /> : 
-                        <img className='profile__avatar' src="../src/assets/images/anonymous.png" alt="avatar" /> }
+                        <img className='profile__avatar' src={`${URL}/animations/anonymous.png`} alt="avatar" /> }
                     <div className='profile__info'>
                     {user.username ? 
                     <>
@@ -130,13 +130,11 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
                 </div>
 
                     {publicView ? 
-
+                    user.username !== "Anonymous" ?
                         <h2 className='profile__feed-heading profile__feed-heading--promos'>
-                        <img className='profile__feed-heading--arrow' src="../../src/assets/images/down-arrow.svg" alt="" />
+                        <img className='profile__feed-heading--arrow' src={`${import.meta.env.VITE_BASE_URL}/animations/down-arrow.svg`} alt="" />
                             {`Check out ${user.username}'s interests and creations!`}
-                        {/* <img className='profile__feed-heading--arrow' src="../../src/assets/images/down-arrow.svg" alt="" /> */}
-                        </h2> 
-
+                        </h2> : null
                         : 
                         <h2  className='profile__feed-heading'>Your Past Thoughts</h2>}
                 <ul className='profile__feed'>

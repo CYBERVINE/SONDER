@@ -22,6 +22,7 @@ function Login ({getLoginId}) {
           password : form.password.value
         }
         )
+        console.log(sessionStorage.authToken)
         sessionStorage.authToken = response.data.token
         if (sessionStorage.authToken && sessionStorage.authToken !== "undefined"){
           getLoginId()

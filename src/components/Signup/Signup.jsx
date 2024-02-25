@@ -24,15 +24,13 @@ function Signup () {
               username: form.username.value,
               email: form.email.value,
               password: form.password.value,
-              city: "default",
-              avatar: `${URL}/avatars/anonymous.png`,
+              avatar: `${URL}/animations/anonymous.png`,
               description: "New to Sonder"
             })
           } catch (err) {
             console.error(err)
             
             if (err.response.data === "That email is already in use"){
-              console.log(err.response.data)
               setEmailInUse("form__error")
               return
             }
