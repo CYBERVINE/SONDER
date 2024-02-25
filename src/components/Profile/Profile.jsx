@@ -130,15 +130,15 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
                 </div>
 
                     {publicView ? 
-                    user.username !== "Anonymous" ?
+                    user.username ?
                         <h2 className='profile__feed-heading profile__feed-heading--promos'>
-                        <img className='profile__feed-heading--arrow' src={`${import.meta.env.VITE_BASE_URL}/animations/down-arrow.svg`} alt="" />
+                        <img className='profile__feed-heading--arrow' src={`${URL}/animations/down-arrow.svg`} alt="" />
                             {`Check out ${user.username}'s interests and creations!`}
                         </h2> : null
                         : 
                         <h2  className='profile__feed-heading'>Your Past Thoughts</h2>}
                 <ul className='profile__feed'>
-                    {(publicView && promos.length === 0) && 
+                    {((publicView && promos.length === 0) && user.name) && 
                     <li className='profile__entry profile__entry--empty'>
                         Nothing to promote yet!
                         </li> }
@@ -149,13 +149,13 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
                     {publicView ? promos.map(promo=>{
                         return (
                             <li  key={promo.id} className='profile__entry' >
-                            <a className="profile__entry--link" href={promo.link ? promo.link : "http://localhost:5173/map"} target='_blank'>
+                            <a className="profile__entry--link" href={promo.link ? promo.link : "https://sonderon.netlify.app/map"} target='_blank'>
                             {promo.promo}
                             </a>
                         {(decodedToken?.id === user.id) && <img 
                         onClick={()=>deletePromo(promo._id)} 
                         className="profile__delete" 
-                        src="../../src/assets/images/delete.svg" 
+                        src={`${URL}/animations/delete.svg`}
                         alt="delete" />}
                         </li>
                             )

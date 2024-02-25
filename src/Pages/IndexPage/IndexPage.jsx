@@ -6,7 +6,9 @@ function IndexPage () {
   return (
     <main className="index">
     <section className="index-page">
-      <video className="index-page__video"src={`${URL}/animations/hero.mov`} loop={true} autoPlay={true} muted type="video/mp4"></video>
+      {/* <video className="index-page__video"src={`${URL}/animations/hero.mov`} loop={true} autoPlay={true} muted type="video/mp4"></video> */}
+      {/* <img className="index-page__video"src={`${URL}/animations/hero.png`}></img> */}
+      <img className="index-page__video"src="../../src/assets/images/hero.png"></img>
     <Hero/>
     </section>
       <div className="index-page__backing">
