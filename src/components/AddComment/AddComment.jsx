@@ -22,7 +22,7 @@ function CommentsModal({getPosts, coords, toggleModal, decodedToken}){
       }
     }
     post()
-    setTimeout(()=>getPosts(),100)
+    setTimeout(()=>getPosts(),2500)
     
     toggleModal()
     e.target.comment.value = ''
