@@ -20,17 +20,17 @@ function App() {
   const [serverLoading, setServerLoading] = useState('')
 
   function giveCoords (){
-    // navigator.geolocation.getCurrentPosition(success)
-    // function success (pos){
-      // setCoords({
-        //     lat : pos.coords.latitude,
-        //     lng: pos .coords.longitude
-        // })
-        // }
-        setCoords({
-            lat : 49.2827,
-            lng: -123.1207
+    navigator.geolocation.getCurrentPosition(success)
+    function success (pos){
+      setCoords({
+            lat : pos.coords.latitude,
+            lng: pos .coords.longitude
         })
+        }
+        // setCoords({
+        //     lat : 49.2827,
+        //     lng: -123.1207
+        // })
   }
 
   async function loading () {
