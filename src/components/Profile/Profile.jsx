@@ -97,7 +97,7 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
                     }
                     </div>
                     
-                </div>
+                </div> 
                 <div className='profile__map'>
                     {coords.lat && <MapContainer className="profile_leaf" 
                     center={[coords.lat, coords.lng]} 
@@ -130,11 +130,12 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
                 </div>
 
                     {publicView ? 
-                    user.username ?
+                    promos.length > 0 ?
                         <h2 className='profile__feed-heading profile__feed-heading--promos'>
                         <img className='profile__feed-heading--arrow' src={`${URL}/animations/down-arrow.svg`} alt="" />
                             {`Check out ${user.username}'s interests and creations!`}
-                        </h2> : null
+                        </h2> : <h2 className='profile__feed-heading profile__feed-heading--promos profile__feed-heading--underline'>{` ${user.username} has nothing to promot, yet`}</h2>
+
                         : 
                         <h2  className='profile__feed-heading'>Your Past Thoughts</h2>}
                 <ul className='profile__feed'>

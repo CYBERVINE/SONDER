@@ -113,7 +113,7 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
                 <button className={hide ? "map__precision-button" : "map__precision-button--hidden"} onClick={()=>setRange(0.001)}>High</button>
                 <button className={hide ? "map__precision-button" : "map__precision-button--hidden"} onClick={()=>setRange(0.01)}>Medium</button>
                 <button className={hide ? "map__precision-button" : "map__precision-button--hidden"} onClick={()=>setRange(0.1)}>Low</button>
-                <p>{range}</p>
+                <p className={hide ? null : "map__precision-button--hidden"}>{range}</p>
               </>
             </section>
               {(sessionStorage.getItem("authToken") && !params.id) ?
