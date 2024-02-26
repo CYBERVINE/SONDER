@@ -3,13 +3,13 @@
 
   &__map{
     position: absolute;
-    animation: map-out 2.5s ease-in-out;
+    animation: map-out 3s ease-in-out;
     animation-fill-mode: forwards;
   }
 
   &__profile{
     position: absolute;
-    animation: profile-in 2.5s ease-in-out;
+    animation: profile-in 3s ease-in-out;
   }
 }
 
@@ -18,17 +18,21 @@
     scale: .5;
 
   }
-  20%{
-    scale: .5;
-    transform: translateX(0vw)
+  8%{
+    scale: .45;
   }
-  
-  30%{
-    transform: translateX(-60vw);
-    z-index: 1000;
-  }
-  
   40%{
+    transform: translateX(0vw);
+    opacity: 1;
+  }
+  
+  60%{
+    transform: translateX(-65vw);
+    z-index: 1000;
+    scale: .448;
+  }
+  
+  65%{
     z-index: -1000;
   }
   80%{
@@ -46,17 +50,17 @@
     opacity: 0;
     scale: 0.25;
   }
-  20%{
+  40%{
     opacity: 0;
     scale: 0.25;
     transform: translateX(0);
   }
-  30%{
-    transform: translateX(60vw);
+  60%{
+    transform: translateX(65vw);
     scale: 0.65;
     opacity: 1;
   }
-  60%{
+  70%{
     transform: translateX(0);
     scale: 1;
   }

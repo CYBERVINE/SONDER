@@ -18,7 +18,7 @@ function IndexPage () {
         <p className="index-page__footer--text index-page__footer--quote">
            The world inspires thoughts that often go unshared. SONDER is for business owners, activists, poets, and any one who wants to share thier nuggets of wisdom, or promote their good to the world.</p>
         <p className="index-page__footer--text index-page__footer--quote">
-           <b>PERSONAL JOURNAL • PROMOTIONAL TOOL • EMPATHY AVENUE</b></p>
+           <b> PERSONAL JOURNAL, PROMOTIONAL TOOL, AVENUE FOR EMPATHY </b></p>
         <div className="index-page__footer--links">  
         <p className="index-page__footer--text">&#169; KEVIN BYRNE </p>
         <a className="index-page__footer--text index-page__footer--link" target="_blank" href="https://linkedin.com/in/kevinbyrne09"> LinkedIn</a>

@@ -17,7 +17,6 @@
     
     @include tablet{
       font-size: 1rem;
-      padding: 0 0.55rem;
     }
 
     @include desktop {
@@ -47,7 +46,7 @@
 
       @include tablet{
         height: 1.4rem;
-        top: 0.6rem;
+        top: 0.5rem;
         right: 1.5rem
 
       }
@@ -101,17 +100,18 @@
   &__comment{
     font-weight: 700;
     margin: 0;
-    border-bottom: 4px solid;
-    border-top: 4px solid;
+    border-bottom: 2px solid;
+    border-top: 2px solid;
     word-wrap: break-word;
     overflow-y: scroll;
     max-height: 10rem;
     line-height: 1.7rem;
+    padding: 0.25rem 0;
     
     @include tablet{
+      max-height: 17rem;
       font-size: 1.5rem;
       padding: 0.5rem;
-      max-height: 17rem;
 
     }
     @include desktop{
@@ -175,14 +175,18 @@
     @include tablet {
       display: flex;
       margin: 2rem;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       width: 10rem;
+    }
+
+    &:hover{
+      border: 2px solid rgba(255, 217, 0, 0.8);
     }
     &-title{
       font-size: 1rem;
-
       &:hover{
         cursor: pointer;
+        color: aqua;
       }
 
       @include tablet{
@@ -300,4 +304,8 @@
    margin-top: -12.5rem; 
    margin-left: -1rem;
 
+}
+
+.leaflet-popup-content p {
+  margin: 0.75rem 0; 
 }

@@ -48,10 +48,6 @@ li {
   z-index: 1000;
   left:8vw;
   animation: loading alternate 1.3s infinite;
-  
-  @include desktop{
-    left:24vw;
-  }
 }
   
   @keyframes loading {
