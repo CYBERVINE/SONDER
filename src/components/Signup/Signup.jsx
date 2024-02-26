@@ -17,13 +17,13 @@ function Signup () {
       setPassword("")
 
         if ((form.password.value === form.confirmPassword.value) && form.password.value.length > 4){
-
+            console.log(form.email.value.toLowerCase())
           try{
             const response = await axios.post(`${URL}/users`, 
             {
               username: form.username.value,
-              email: form.email.value,
-              password: form.password.value,
+              email: form.email.value.toLowerCase(),
+              password: form.password.value.toLowerCase(),
               avatar: `${URL}/animations/anonymous.png`,
               description: "New to Sonder"
             })
