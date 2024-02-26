@@ -49,6 +49,8 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
         console.error(err)
       }
     }
+
+    console.log(coords)
   
     return ( 
       <>
@@ -108,7 +110,8 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
 
           <footer className={params.id ? "map__nav--profile" : "map__nav"}>
             <section className={modalActive === "" ? "map__precision" : "map__nav--modal"}> 
-                <p  className="map__precision-title" onClick={hidePrecision} >Set Precison</p>
+                <button className={hide ? "map__precision-button" : "map__precision-button--hidden"} onClick={()=>giveCoords()}>Re-Center</button>
+                <p  className="map__precision-title" onClick={hidePrecision} >GPS Precison</p>
               <>
                 <button className={hide ? "map__precision-button" : "map__precision-button--hidden"} onClick={()=>setRange(0.001)}>High</button>
                 <button className={hide ? "map__precision-button" : "map__precision-button--hidden"} onClick={()=>setRange(0.01)}>Medium</button>
@@ -124,7 +127,7 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
                 }
             <p 
             onClick={toggleModal} 
-            className={modalActive === "" ? "map__nav-button map__nav-button--raised" : "map__nav--modal"}>
+            className={modalActive === "" ? "map__nav-button" : "map__nav--modal"}>
                 Post
             </p>
             </footer>
