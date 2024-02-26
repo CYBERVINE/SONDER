@@ -128,6 +128,7 @@
     border-radius: 0.5rem;
     width: 14rem;
     min-height: 8rem;
+    width: 15.5rem;
     
     @include tablet{
       margin: 1rem;
@@ -146,7 +147,7 @@
     background-color: black;
     border: 3px solid black;
     color: white;
-    min-height: 8rem;
+
 
     &--text{
       margin: 0.25rem 0 0.3rem 0.25rem;
