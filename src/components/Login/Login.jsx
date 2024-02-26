@@ -18,8 +18,8 @@ function Login ({getLoginId}) {
       try {
         const response = await axios.post(`${URL}/login`,
         {
-          email : form.email.value,
-          password : form.password.value
+          email : form.email.value.toLowerCase(),
+          password : form.password.value.toLowerCase()
         }
         )
         console.log(sessionStorage.authToken)
