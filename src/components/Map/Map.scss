@@ -159,10 +159,10 @@
     color: white;
     bottom: 1rem;
     background-color: black;
-    border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 0.5rem;
     padding: 0.25rem;
     border: 2px solid aqua;
     width: 7rem;
@@ -219,37 +219,23 @@
     color: whitesmoke;
     background-color: black;
     border: 2px solid aqua;
-    border-radius: 0.5rem;
     font-size: 1rem;
-    padding: 0.25rem;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.75rem;
     margin-top: -16rem;
 
-    @include tablet{
-      border-radius: 30%;
-    }
     
-    &--raised{
-      margin-top: -21.5rem;
-      @include tablet{
-        margin: 2rem;
-      }
+    @include tablet {
+      margin: 2rem;
+      padding: 0.25rem 2rem 0.5rem;
+      font-size: 1.4rem;
+      font-size: 2rem;
     }
 
-    
     &:hover{
       cursor: pointer;
       color: rgba(0, 255, 255, 0.8);
       border: 2px solid rgba(255, 217, 0, 0.8);
-    }
-
-    @include tablet {
-      margin: 2rem;
-      padding: 0.65rem 1.25rem;
-      font-size: 1.4rem;
-    }
-    
-    @include desktop{
-      font-size: 2rem;
     }
     
     &--collapse{

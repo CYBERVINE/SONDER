@@ -124,7 +124,7 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
                 }
             <p 
             onClick={toggleModal} 
-            className={modalActive === "" ? "map__nav-button map__nav-button--raised" : "map__nav--modal"}>
+            className={modalActive === "" ? "map__nav-button" : "map__nav--modal"}>
                 Post
             </p>
             </footer>
