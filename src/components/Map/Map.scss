@@ -180,13 +180,14 @@
     }
     &-title{
       font-size: 1rem;
+      margin: 0.05rem;
       &:hover{
         cursor: pointer;
         color: aqua;
       }
 
       @include tablet{
-        font-size: 1.6rem;
+        font-size: 1.2rem;
       }
     }
 
