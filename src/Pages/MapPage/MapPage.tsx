@@ -1,32 +1,12 @@
 import Map from "../../components/Map/Map.tsx"
 import AddComment from '../../components/AddComment/AddComment.tsx'
+import { Post, Props } from '../../types/CustomsTypes.ts'
 import './MapPage.scss'
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router"
 import axios from "axios"
 
-interface Coordinates {
-  lat: number;
-  lng: number;
-}
-
-interface Props {
-  decodedToken: string;
-  coords: Coordinates;
-  giveCoords: () => void;
-  getLoginId: () => void;
-}
-
-interface Post {
-  comment: string;
-  likes: number;
-  lat: number;
-  lng: number;
-  id: string;
-  user_id: string;
-}
-
-function MapPage({giveCoords, coords, getLoginId, decodedToken}: Props): JSX.Element{
+function MapPage({getLoginId, giveCoords, decodedToken, coords}: Props): JSX.Element{
 
   const URL: string = import.meta.env.VITE_BASE_URL
   const [posts, setPosts] = useState<Post[]>([])
@@ -63,10 +43,10 @@ function MapPage({giveCoords, coords, getLoginId, decodedToken}: Props): JSX.Ele
     <section className="main-page">
       <div onClick={toggleModal} className= {`modal-div ${modalActive}`} ></div>
       <div className={`form-div ${formActive}`}>
-        <AddComment decodedToken={decodedToken} getPosts={getPosts} posts={posts} giveCoords={giveCoords} coords={coords} toggleModal={toggleModal}/>
+        <AddComment decodedToken={decodedToken} getPosts={getPosts} coords={coords} toggleModal={toggleModal}/>
       </div>
       <div className={`map-div ${mapMove}`}>
-        <Map  decodedToken={decodedToken} getLoginId={getLoginId} getPosts={getPosts} posts={posts} giveCoords={giveCoords} coords={coords} toggleMain={toggleMain} toggleModal={toggleModal} modalActive={modalActive} mapMove={mapMove}/>
+        <Map  decodedToken={decodedToken} getPosts={getPosts} posts={posts} giveCoords={giveCoords} coords={coords} toggleMain={toggleMain} toggleModal={toggleModal} modalActive={modalActive} mapMove={mapMove}/>
       </div>
     </section>
   )

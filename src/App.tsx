@@ -11,14 +11,14 @@ import ProfilePage from './Pages/ProfilePage/ProfilePage.tsx'
 import EditProfilePage from './Pages/EditProfilePage/EditProfilePage.tsx'
 import MapPage from './Pages/MapPage/MapPage.tsx'
 import axios from 'axios'
-
+import { Coordinates } from './types/CustomsTypes.ts'
 
 
 
 function App() { 
 
-  const [coords, setCoords] = useState({})
-  const [decodedToken, setDecodedToken] = useState<string | null>('')
+  const [coords, setCoords] = useState<Coordinates>({lat:0,lng:0})
+  const [decodedToken, setDecodedToken] = useState<null | string>('')
   const [serverLoading, setServerLoading] = useState<string>('')
 
   function giveCoords(): void{
@@ -43,11 +43,12 @@ function App() {
   loading()
 
   function getLoginId(): void {
-    const token: string | null = sessionStorage.getItem("authToken")
+    const token: null | string = sessionStorage.getItem("authToken")
     if(token){
-      const decodedToken: string | null = decodeToken(token)
-      setDecodedToken(decodedToken)
-    }
+        const decodedToken: null | string = decodeToken(token)
+        setDecodedToken(decodedToken)
+      }
+    
   }
 
   return (
@@ -58,7 +59,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<IndexPage/>}/>
-        <Route path='/login' element={<LoginPage decodedToken={decodedToken} getLoginId={getLoginId}/>}/>
+        <Route path='/login' element={<LoginPage getLoginId={getLoginId}/>}/>
         <Route path='/signup' element={<SignupPage/>}/>
         <Route path='/profile/:id' element={<ProfilePage giveCoords={giveCoords} coords={coords} decodedToken={decodedToken} getLoginId={getLoginId}/>}/>
         <Route path='/map' element={<MapPage giveCoords={giveCoords} coords={coords} decodedToken={decodedToken} getLoginId={getLoginId}/>}/>

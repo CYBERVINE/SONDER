@@ -1,16 +1,17 @@
 import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
+import { LoginProp as Prop } from "../../types/CustomsTypes"
 import axios from "axios"
 import './Login.scss'
 
-function Login ({getLoginId}) {
+function Login ({getLoginId}: Prop): JSX.Element {
   const URL = import.meta.env.VITE_BASE_URL
   const [noMatch, setNoMatch] = useState("")
   const [noEmail, setNoEmail] = useState("")
   const navigate = useNavigate()
-  function handleSubmit (e) {
+  function handleSubmit (e:any) {
     e.preventDefault()
-    async function validateUser (e) {
+    async function validateUser (e:any) {
       const form = e.target
 
       setNoEmail("")

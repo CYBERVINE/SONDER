@@ -1,18 +1,8 @@
+import { AddCommentProps as Props } from '../../types/CustomsTypes'
 import './AddComment.scss'
 import axios from "axios"
 const URL: string = import.meta.env.VITE_BASE_URL
 
-interface Coordinates {
-  lat: number;
-  lng: number;
-}
-
-interface Props {
-  getPosts: ()=> void;
-  toggleModal: ()=> void;
-  decodedToken: string
-  coords: Coordinates;
-}
 
 function CommentsModal({getPosts, coords, toggleModal, decodedToken}:Props): JSX.Element{
 
