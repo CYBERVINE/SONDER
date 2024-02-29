@@ -1,8 +1,8 @@
-import Hero from "../../components/Hero/Hero"
+import Hero from "../../components/Hero/Hero.tsx"
 import './IndexPage.scss'
 
-const URL = import.meta.env.VITE_BASE_URL
-function IndexPage () {
+const URL:string = import.meta.env.VITE_BASE_URL
+function IndexPage (): JSX.Element  {
   return (
     <main className="index">
     <section className="index-page">

@@ -49,7 +49,7 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
         }
     }
 
-    async function deletePromo(promoId){
+    async function deletePromo(promoId: number){
         const response = await axios.delete(`${URL}/promos/${promoId}`)
         getProfile(params.id)
     }

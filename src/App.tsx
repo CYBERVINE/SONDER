@@ -4,27 +4,29 @@ import { BrowserRouter, Routes, Route, } from 'react-router-dom'
 import { useState } from 'react'
 import { decodeToken } from "react-jwt" //deploy
 
-import IndexPage from './Pages/IndexPage/IndexPage'
-import SignupPage from './Pages/SignupPage/SignupPage'
-import LoginPage from './Pages/LoginPage/LoginPage'
-import ProfilePage from './Pages/ProfilePage/ProfilePage'
-import EditProfilePage from './Pages/EditProfilePage/EditProfilePage'
-import MapPage from './Pages/MapPage/MapPage'
+import IndexPage from './Pages/IndexPage/IndexPage.tsx'
+import SignupPage from './Pages/SignupPage/SignupPage.tsx'
+import LoginPage from './Pages/LoginPage/LoginPage.tsx'
+import ProfilePage from './Pages/ProfilePage/ProfilePage.tsx'
+import EditProfilePage from './Pages/EditProfilePage/EditProfilePage.tsx'
+import MapPage from './Pages/MapPage/MapPage.tsx'
 import axios from 'axios'
+import { Coordinates } from './types/CustomsTypes.ts'
+
 
 
 function App() { 
 
-  const [coords, setCoords] = useState({})
-  const [decodedToken, setDecodedToken] = useState({})
-  const [serverLoading, setServerLoading] = useState('')
+  const [coords, setCoords] = useState<Coordinates>({lat:0,lng:0})
+  const [decodedToken, setDecodedToken] = useState<null | string>('')
+  const [serverLoading, setServerLoading] = useState<string>('')
 
-  function giveCoords (){
+  function giveCoords(): void{
     navigator.geolocation.getCurrentPosition(success)
-    function success (pos){
+    function success (pos: GeolocationPosition){
       setCoords({
             lat : pos.coords.latitude,
-            lng: pos .coords.longitude
+            lng: pos.coords.longitude
         })
         }
         // setCoords({
@@ -33,17 +35,20 @@ function App() {
         // })
   }
 
-  async function loading () {
+  async function loading():Promise<void> {
     const {data} = await axios.get(import.meta.env.VITE_BASE_URL)
     setServerLoading(data)
   }
   
   loading()
 
-  function getLoginId () {
-    const token = sessionStorage.getItem("authToken")
-    if(token){setDecodedToken(decodeToken(token))
-    }
+  function getLoginId(): void {
+    const token: null | string = sessionStorage.getItem("authToken")
+    if(token){
+        const decodedToken: null | string = decodeToken(token)
+        setDecodedToken(decodedToken)
+      }
+    
   }
 
   return (
@@ -54,7 +59,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<IndexPage/>}/>
-        <Route path='/login' element={<LoginPage decodedToken={decodedToken} getLoginId={getLoginId}/>}/>
+        <Route path='/login' element={<LoginPage getLoginId={getLoginId}/>}/>
         <Route path='/signup' element={<SignupPage/>}/>
         <Route path='/profile/:id' element={<ProfilePage giveCoords={giveCoords} coords={coords} decodedToken={decodedToken} getLoginId={getLoginId}/>}/>
         <Route path='/map' element={<MapPage giveCoords={giveCoords} coords={coords} decodedToken={decodedToken} getLoginId={getLoginId}/>}/>

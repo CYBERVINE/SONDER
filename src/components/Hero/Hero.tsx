@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import "./Hero.scss"
 
-function Hero () {
+function Hero (): JSX.Element  {
   return (
     <>
     <div className="header">

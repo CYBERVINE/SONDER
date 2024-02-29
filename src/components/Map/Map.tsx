@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import {Link} from 'react-router-dom'
 import { useParams } from "react-router";
 import MarkerClusterGroup from 'react-leaflet-cluster'
@@ -7,10 +7,10 @@ import axios from "axios";
 import L from 'leaflet'
 import "leaflet/dist/leaflet.css";
 import './Map.scss'
-const URL = import.meta.env.VITE_BASE_URL
+const URL: string = import.meta.env.VITE_BASE_URL
 
 
-function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, modalActive, decodedToken}) {
+function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, modalActive, decodedToken}: Props): JSX.Element {
   const params = useParams()
   const mapRef = useRef(null);
   const [range, setRange] = useState(0.001)
@@ -38,9 +38,9 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
       hide ? setHide(false) : setHide(true)
     }
 
-    async function likeComment(id) {
+    async function likeComment(id:string) {
       try{
-        const comment = await axios.patch(`${URL}/posts/${id}`, {
+        await axios.patch(`${URL}/posts/${id}`, {
           post_id: id,
           user_id: decodedToken.id
         })
@@ -48,10 +48,7 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
       } catch (err) {
         console.error(err)
       }
-    }
-
-    console.log(coords)
-  
+    }  
     return ( 
       <>
     { coords.lat &&
@@ -64,7 +61,7 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
             maxZoom= {20}
             subdomains={['mt1','mt2','mt3']}
             />
-            <Marker position={[coords.lat, coords.lng]} icon={location}></Marker>
+            {!params.id && <Marker position={[coords.lat, coords.lng]} icon={location}></Marker>}
             <MarkerClusterGroup
              maxClusterRadius={15} 
              >
@@ -116,7 +113,7 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
                 <button className={hide ? "map__precision-button" : "map__precision-button--hidden"} onClick={()=>setRange(0.001)}>High</button>
                 <button className={hide ? "map__precision-button" : "map__precision-button--hidden"} onClick={()=>setRange(0.01)}>Medium</button>
                 <button className={hide ? "map__precision-button" : "map__precision-button--hidden"} onClick={()=>setRange(0.1)}>Low</button>
-                <p className={hide ? null : "map__precision-button--hidden"}>{range}</p>
+                <p className={hide ? "" : "map__precision-button--hidden"}>{range}</p>
               </>
             </section>
               {(sessionStorage.getItem("authToken") && !params.id) ?
