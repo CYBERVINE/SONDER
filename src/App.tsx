@@ -13,6 +13,8 @@ import MapPage from './Pages/MapPage/MapPage.tsx'
 import axios from 'axios'
 
 
+
+
 function App() { 
 
   const [coords, setCoords] = useState({})

@@ -1,20 +1,31 @@
 import './AddComment.scss'
 import axios from "axios"
-const URL = import.meta.env.VITE_BASE_URL
+const URL: string = import.meta.env.VITE_BASE_URL
 
+interface Coordinates {
+  lat: number;
+  lng: number;
+}
 
-function CommentsModal({getPosts, coords, toggleModal, decodedToken}){
+interface Props {
+  getPosts: ()=> void;
+  toggleModal: ()=> void;
+  decodedToken: string
+  coords: Coordinates;
+}
 
-  function handleSubmit (e) {
+function CommentsModal({getPosts, coords, toggleModal, decodedToken}:Props): JSX.Element{
+
+  function handleSubmit (e: any) {
     e.preventDefault()
-    async function post () {
+    async function post():Promise<void> {
       try{
-        const {data} = await axios.post(`${URL}/posts`,
+        await axios.post(`${URL}/posts`,
         {
           lat: coords.lat,
           lng: coords.lng,
           comment: e.target.comment.value,
-          user_id: decodedToken.id || 1
+          user_id: decodedToken || 1
         })
 
       } catch (err) {
@@ -33,7 +44,7 @@ function CommentsModal({getPosts, coords, toggleModal, decodedToken}){
     <section >
         <form className='add-comment__form add-comment__font' action="submit" onSubmit={handleSubmit}>
           <label  className='add-comment__label' htmlFor="comment">INSPIRED?</label>
-          <textarea className='add-comment__comment add-comment__font' type="text" name="comment"rows="12"/>
+          <textarea className='add-comment__comment add-comment__font' name="comment"rows={12}/>
           <button className='add-comment__submit add-comment__font' type="submit">MAP YOUR MIND</button>
         </form>
     </section>
