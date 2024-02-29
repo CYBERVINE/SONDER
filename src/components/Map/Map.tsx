@@ -9,12 +9,6 @@ import "leaflet/dist/leaflet.css";
 import './Map.scss'
 const URL: string = import.meta.env.VITE_BASE_URL
 
-interface Props {
-  getPosts: ()=>void;
-  posts: [],
-  giveCoords: ()=>void;
-  
-}
 
 function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, modalActive, decodedToken}: Props): JSX.Element {
   const params = useParams()
@@ -67,7 +61,7 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
             maxZoom= {20}
             subdomains={['mt1','mt2','mt3']}
             />
-            <Marker position={[coords.lat, coords.lng]} icon={location}></Marker>
+            {!params.id && <Marker position={[coords.lat, coords.lng]} icon={location}></Marker>}
             <MarkerClusterGroup
              maxClusterRadius={15} 
              >

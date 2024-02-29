@@ -31,7 +31,7 @@ function Login ({getLoginId}: Prop): JSX.Element {
         }
 
         console.log(response)
-      } catch (err) {
+      } catch (err: any) {
         console.error(err.response)
         if (err.response.status === 404) {
           setNoEmail("form__error")

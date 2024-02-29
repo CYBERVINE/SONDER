@@ -18,10 +18,8 @@
     scale: .5;
 
   }
-  2%{
-    scale: .45;
-  }
   40%{
+    scale: .45;
     transform: translateX(0vw);
     opacity: 1;
   }
@@ -29,7 +27,7 @@
   60%{
     transform: translateX(-65vw);
     z-index: 1000;
-    scale: .55;
+    scale: .48;
   }
   
   65%{

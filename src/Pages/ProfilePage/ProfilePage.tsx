@@ -1,7 +1,9 @@
 import Profile from '../../components/Profile/Profile.tsx'
 import Map from '../../components/Map/Map.tsx'
 import './ProfilePage.scss'
-function ProfilePage ({giveCoords, coords, decodedToken, getLoginId}) {
+import { Props } from '../../types/CustomsTypes.ts'
+
+function ProfilePage ({giveCoords, coords, decodedToken, getLoginId}: Props): JSX.Element {
   
   return (
     <section className='profile-page'>
@@ -9,7 +11,7 @@ function ProfilePage ({giveCoords, coords, decodedToken, getLoginId}) {
       <Map giveCoords={giveCoords} coords={coords}/>
     </div>
     <div className='profile-page__profile'>
-      <Profile  giveCoords={giveCoords} coords={coords}  decodedToken={decodedToken} getLoginId={getLoginId}/>
+      <Profile  giveCoords={giveCoords} coords={coords} decodedToken={decodedToken} getLoginId={getLoginId}/>
     </div>
     </section>
   )

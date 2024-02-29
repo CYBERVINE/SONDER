@@ -15,8 +15,6 @@ function MapPage({getLoginId, giveCoords, decodedToken, coords}: Props): JSX.Ele
   const [mapMove, setMapMove] = useState<String>("")
   const navigate = useNavigate()
 
-  console.log(posts[0])
-
   function toggleMain (userId: string | number): void { 
     userId = userId ? userId : 1
     setMapMove("map-div--out")
