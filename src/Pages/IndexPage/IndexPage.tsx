@@ -1,4 +1,4 @@
-import Hero from "../../components/Hero/Hero"
+import Hero from "../../components/Hero/Hero.tsx"
 import './IndexPage.scss'
 
 const URL = import.meta.env.VITE_BASE_URL

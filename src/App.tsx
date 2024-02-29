@@ -4,27 +4,27 @@ import { BrowserRouter, Routes, Route, } from 'react-router-dom'
 import { useState } from 'react'
 import { decodeToken } from "react-jwt" //deploy
 
-import IndexPage from './Pages/IndexPage/IndexPage'
-import SignupPage from './Pages/SignupPage/SignupPage'
-import LoginPage from './Pages/LoginPage/LoginPage'
-import ProfilePage from './Pages/ProfilePage/ProfilePage'
-import EditProfilePage from './Pages/EditProfilePage/EditProfilePage'
-import MapPage from './Pages/MapPage/MapPage'
+import IndexPage from './Pages/IndexPage/IndexPage.tsx'
+import SignupPage from './Pages/SignupPage/SignupPage.tsx'
+import LoginPage from './Pages/LoginPage/LoginPage.tsx'
+import ProfilePage from './Pages/ProfilePage/ProfilePage.tsx'
+import EditProfilePage from './Pages/EditProfilePage/EditProfilePage.tsx'
+import MapPage from './Pages/MapPage/MapPage.tsx'
 import axios from 'axios'
 
 
 function App() { 
 
   const [coords, setCoords] = useState({})
-  const [decodedToken, setDecodedToken] = useState({})
-  const [serverLoading, setServerLoading] = useState('')
+  const [decodedToken, setDecodedToken] = useState<string | null>('')
+  const [serverLoading, setServerLoading] = useState<string>('')
 
-  function giveCoords (){
+  function giveCoords(): void{
     navigator.geolocation.getCurrentPosition(success)
-    function success (pos){
+    function success (pos: GeolocationPosition){
       setCoords({
             lat : pos.coords.latitude,
-            lng: pos .coords.longitude
+            lng: pos.coords.longitude
         })
         }
         // setCoords({
@@ -33,16 +33,18 @@ function App() {
         // })
   }
 
-  async function loading () {
+  async function loading():Promise<void> {
     const {data} = await axios.get(import.meta.env.VITE_BASE_URL)
     setServerLoading(data)
   }
   
   loading()
 
-  function getLoginId () {
-    const token = sessionStorage.getItem("authToken")
-    if(token){setDecodedToken(decodeToken(token))
+  function getLoginId(): void {
+    const token: string | null = sessionStorage.getItem("authToken")
+    if(token){
+      const decodedToken: string | null = decodeToken(token)
+      setDecodedToken(decodedToken)
     }
   }
 

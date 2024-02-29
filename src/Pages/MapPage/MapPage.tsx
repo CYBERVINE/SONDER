@@ -1,5 +1,5 @@
-import Map from "../../components/Map/Map.jsx"
-import AddComment from '../../components/AddComment/AddComment'
+import Map from "../../components/Map/Map.tsx"
+import AddComment from '../../components/AddComment/AddComment.tsx'
 import './MapPage.scss'
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router"
