@@ -1,29 +1,29 @@
 import './styles/global.scss'
-
+import React from 'react'
 import { BrowserRouter, Routes, Route, } from 'react-router-dom'
 import { useState } from 'react'
 import { decodeToken } from "react-jwt" //deploy
 
-import IndexPage from './Pages/IndexPage/IndexPage.tsx'
-import SignupPage from './Pages/SignupPage/SignupPage.tsx'
-import LoginPage from './Pages/LoginPage/LoginPage.tsx'
-import ProfilePage from './Pages/ProfilePage/ProfilePage.tsx'
-import EditProfilePage from './Pages/EditProfilePage/EditProfilePage.tsx'
-import MapPage from './Pages/MapPage/MapPage.tsx'
+import IndexPage from './Pages/IndexPage/IndexPage.jsx'
+import SignupPage from './Pages/SignupPage/SignupPage.jsx'
+import LoginPage from './Pages/LoginPage/LoginPage.jsx'
+import ProfilePage from './Pages/ProfilePage/ProfilePage.jsx'
+import EditProfilePage from './Pages/EditProfilePage/EditProfilePage.jsx'
+import MapPage from './Pages/MapPage/MapPage.jsx'
 import axios from 'axios'
-import { Coordinates } from './types/CustomsTypes.ts'
+
 
 
 
 function App() { 
 
-  const [coords, setCoords] = useState<Coordinates>({lat:0,lng:0})
-  const [decodedToken, setDecodedToken] = useState<null | string>('')
-  const [serverLoading, setServerLoading] = useState<string>('')
+  const [coords, setCoords] = useState({})
+  const [decodedToken, setDecodedToken] = useState('')
+  const [serverLoading, setServerLoading] = useState('')
 
-  function giveCoords(): void{
+  function giveCoords(){
     navigator.geolocation.getCurrentPosition(success)
-    function success (pos: GeolocationPosition){
+    function success (pos){
       setCoords({
             lat : pos.coords.latitude,
             lng: pos.coords.longitude
@@ -35,17 +35,17 @@ function App() {
         // })
   }
 
-  async function loading():Promise<void> {
+  async function loading() {
     const {data} = await axios.get(import.meta.env.VITE_BASE_URL)
     setServerLoading(data)
   }
   
   loading()
 
-  function getLoginId(): void {
-    const token: null | string = sessionStorage.getItem("authToken")
+  function getLoginId() {
+    const token = sessionStorage.getItem("authToken")
     if(token){
-        const decodedToken: null | string = decodeToken(token)
+        const decodedToken = decodeToken(token)
         setDecodedToken(decodedToken)
       }
     

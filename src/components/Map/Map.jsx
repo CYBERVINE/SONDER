@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import {Link} from 'react-router-dom'
 import { useParams } from "react-router";
 import MarkerClusterGroup from 'react-leaflet-cluster'
@@ -7,10 +7,10 @@ import axios from "axios";
 import L from 'leaflet'
 import "leaflet/dist/leaflet.css";
 import './Map.scss'
-const URL: string = import.meta.env.VITE_BASE_URL
+const URL = import.meta.env.VITE_BASE_URL
 
 
-function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, modalActive, decodedToken}: Props): JSX.Element {
+function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, modalActive, decodedToken}) {
   const params = useParams()
   const mapRef = useRef(null);
   const [range, setRange] = useState(0.001)
@@ -38,7 +38,7 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
       hide ? setHide(false) : setHide(true)
     }
 
-    async function likeComment(id:string) {
+    async function likeComment(id) {
       try{
         await axios.patch(`${URL}/posts/${id}`, {
           post_id: id,
@@ -49,6 +49,7 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
         console.error(err)
       }
     }  
+
     return ( 
       <>
     { coords.lat &&
@@ -117,7 +118,7 @@ function Map ({getPosts, posts, giveCoords, coords, toggleMain, toggleModal, mod
               </>
             </section>
               {(sessionStorage.getItem("authToken") && !params.id) ?
-                  <p onClick={()=>toggleMain(decodedToken?.id)} className="map__nav-button ">
+                  <p onClick={()=>toggleMain(decodedToken.id)} className="map__nav-button ">
                   Profile
                   </p> :
                   <Link to={"/signup"} className="map__nav-button">Sign Up</Link>

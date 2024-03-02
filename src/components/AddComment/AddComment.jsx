@@ -1,21 +1,20 @@
-import { AddCommentProps as Props } from '../../types/CustomsTypes'
+import React from 'react'
 import './AddComment.scss'
 import axios from "axios"
-const URL: string = import.meta.env.VITE_BASE_URL
+const URL = import.meta.env.VITE_BASE_URL
 
 
-function CommentsModal({getPosts, coords, toggleModal, decodedToken}:Props): JSX.Element{
-
-  function handleSubmit (e: any) {
+function CommentsModal({getPosts, coords, toggleModal, decodedToken}){
+  function handleSubmit (e) {
     e.preventDefault()
-    async function post():Promise<void> {
+    async function post(){
       try{
         await axios.post(`${URL}/posts`,
         {
           lat: coords.lat,
           lng: coords.lng,
           comment: e.target.comment.value,
-          user_id: decodedToken || 1
+          user_id: decodedToken.id || 1
         })
 
       } catch (err) {

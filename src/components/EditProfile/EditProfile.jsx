@@ -1,7 +1,7 @@
 import './EditProfile.scss'
 import { Link } from 'react-router-dom'
 import axios from "axios"
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 const URL = import.meta.env.VITE_BASE_URL
 
 function EditProfile ({getLoginId, decodedToken}) {
@@ -22,8 +22,8 @@ function EditProfile ({getLoginId, decodedToken}) {
     async function editUser () {
       const { data } = await axios.post(`${URL}/users/${decodedToken.id}/edit`,
       {
-        username: form.username.value,
-        description: form.description.value
+        username: form.username.value ? form.username.value : userDetails.username,
+        description: form.description.value ?  form.description.value : userDetails.description
       })
     }
     editUser()
