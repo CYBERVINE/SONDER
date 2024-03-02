@@ -41,7 +41,13 @@ li {
   list-style-type: none;
 }
 
-
+.page-body{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .loading{
   position: absolute;

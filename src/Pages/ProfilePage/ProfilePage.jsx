@@ -1,9 +1,10 @@
-import Profile from '../../components/Profile/Profile.tsx'
-import Map from '../../components/Map/Map.tsx'
+import React from 'react'
+import Profile from '../../components/Profile/Profile.jsx'
+import Map from '../../components/Map/Map.jsx'
 import './ProfilePage.scss'
-import { Props } from '../../types/CustomsTypes.ts'
 
-function ProfilePage ({giveCoords, coords, decodedToken, getLoginId}: Props): JSX.Element {
+
+function ProfilePage ({giveCoords, coords, decodedToken, getLoginId}) {
   
   return (
     <section className='profile-page'>

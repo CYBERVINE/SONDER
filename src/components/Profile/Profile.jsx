@@ -49,7 +49,7 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
         }
     }
 
-    async function deletePromo(promoId: number){
+    async function deletePromo(promoId){
         const response = await axios.delete(`${URL}/promos/${promoId}`)
         getProfile(params.id)
     }
@@ -57,7 +57,7 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
     useEffect(()=>{ getProfile(params)},[user.username])
     useEffect(()=>{ getLoginId()},[])
     useEffect(()=>{ giveCoords()},[])
-    console.log(promos)
+console.log(params.id, user.id)
     return(
         <main onClick={()=>{if(menu)setMenu(false)}}className={`profile ${profileFade}`}>
                 {((decodedToken?.id !== undefined) && (decodedToken.id === user.id)) && 
@@ -129,12 +129,17 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
                     </div>
                 </div>
 
+
+
                     {publicView ? 
                     promos.length > 0 ?
                         <h2 className='profile__feed-heading profile__feed-heading--promos'>
                         <img className='profile__feed-heading--arrow' src={`${URL}/animations/down-arrow.svg`} alt="" />
                             {`Check out ${user.username}'s interests and creations!`}
-                        </h2> : <h2 className='profile__feed-heading profile__feed-heading--promos profile__feed-heading--underline'>{` ${user.username} has nothing to promot, yet`}</h2>
+                        </h2> : 
+                        
+                        user.username ? <h2 className='profile__feed-heading profile__feed-heading--promos profile__feed-heading--underline'>{`${user.username} nothing to promote, yet`}</h2>
+                        : <></>
 
                         : 
                         <h2  className='profile__feed-heading'>Your Past Thoughts</h2>}

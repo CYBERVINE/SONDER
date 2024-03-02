@@ -1,21 +1,22 @@
-import Map from "../../components/Map/Map.tsx"
-import AddComment from '../../components/AddComment/AddComment.tsx'
-import { Post, Props } from '../../types/CustomsTypes.ts'
+import Map from "../../components/Map/Map.jsx"
+import AddComment from '../../components/AddComment/AddComment.jsx'
+import React from 'react'
 import './MapPage.scss'
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router"
 import axios from "axios"
 
-function MapPage({getLoginId, giveCoords, decodedToken, coords}: Props): JSX.Element{
+function MapPage({getLoginId, giveCoords, decodedToken, coords}){
 
-  const URL: string = import.meta.env.VITE_BASE_URL
-  const [posts, setPosts] = useState<Post[]>([])
-  const [modalActive, setModalActive] = useState<string>("")
-  const [formActive, setFormActive] = useState<string>("")
-  const [mapMove, setMapMove] = useState<String>("")
+  const URL = import.meta.env.VITE_BASE_URL
+  const [posts, setPosts] = useState([])
+  const [modalActive, setModalActive] = useState("")
+  const [formActive, setFormActive] = useState("")
+  const [mapMove, setMapMove] = useState("")
   const navigate = useNavigate()
 
-  function toggleMain (userId: string | number): void { 
+  function toggleMain (userId) { 
+    console.log(userId)
     userId = userId ? userId : 1
     setMapMove("map-div--out")
     setTimeout(() => {
@@ -23,13 +24,13 @@ function MapPage({getLoginId, giveCoords, decodedToken, coords}: Props): JSX.Ele
     }, 800);
   }
 
-  function toggleModal ():void {
+  function toggleModal (){
     modalActive === "" ? setModalActive("modal-div--active") : setModalActive("")
     formActive === "" ? setFormActive("form-div--active") : setFormActive("")
 
   }
 
-  async function getPosts ():Promise<void> {  
+  async function getPosts (){  
     const {data} = await axios.get(`${URL}/posts`)
     setPosts(data)
   }

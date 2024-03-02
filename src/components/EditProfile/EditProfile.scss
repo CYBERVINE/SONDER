@@ -1,16 +1,11 @@
 @import '../../styles/partials.scss/breakpoints';
 
 .edit{
-
   width: 100vw;
   background: linear-gradient( to top, #b0d8b0, #EEF4ED) ;
-
-  @include tablet {
-    height: 98vh;
-    width: 96vw;
-    margin: 1vh 2vw;
+  @include desktop{
+    margin-top: 4vh;
   }
-
 
   &__wrapper{
     height: inherit;
