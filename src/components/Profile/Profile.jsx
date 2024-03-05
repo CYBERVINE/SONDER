@@ -36,14 +36,16 @@ function Profile ({giveCoords, coords, decodedToken, getLoginId}) {
           }, 300);
     }
 
+    console.log(user.avatar)
     async function getProfile(params){
         try{
             const user = await axios.get(`${URL}/users/${params.id}`)
             const promos = await axios.get(`${URL}/promos/${params.id}`)
             const posts = await axios.get(`${URL}/posts/${params.id}`)
             setUser(user.data)
-            setPromos(promos.data)
             setPosts(posts.data)
+            setPromos(promos.data)
+            
         }catch(err){
             console.error(err)
         }
