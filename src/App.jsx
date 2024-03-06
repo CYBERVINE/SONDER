@@ -54,7 +54,7 @@ function App() {
   return (
     <>
 
-    {!serverLoading ? <h1 className='loading'>THE SERVER CAN TAKE UP TO 50 SECONDS TO BOOT UP (free-tier), PLEASE WAIT...</h1> : null}
+    {serverLoading ? <h1 className='loading'>THE SERVER CAN TAKE UP TO 50 SECONDS TO BOOT UP (free-tier), PLEASE WAIT...</h1> : null}
 
     <BrowserRouter>
       <Routes>
